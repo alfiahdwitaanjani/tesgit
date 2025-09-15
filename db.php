@@ -1,10 +1,9 @@
 <?php
-// db.php
 $host = "localhost";
 $port = "5432";
-$dbname = "articles";       // <-- sesuaikan dengan nama DB di pgAdmin
-$user = "postgres";        // ganti sesuai user
-$password = "123456"; // ganti sesuai password PostgreSQL kamu
+$dbname = "article";   // nama database sesuai di pgAdmin
+$user = "postgres";    // username PostgreSQL
+$password = "123456";  // password PostgreSQL
 
 try {
     $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
