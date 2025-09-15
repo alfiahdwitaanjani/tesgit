@@ -12,8 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     try {
-        $sql = "INSERT INTO articles (title, content, created_at) 
-                VALUES (:title, :content, NOW())";
+        $sql = "INSERT INTO articles (title, content, created_at) VALUES (:title, :content, NOW())";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             ':title' => $title,
@@ -24,5 +23,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Gagal menyimpan artikel: " . $e->getMessage();
     }
 } else {
-    echo "Metode request tidak valid.";
+    echo "Metode request tidak valid. Method: " . $_SERVER["REQUEST_METHOD"];
 }
