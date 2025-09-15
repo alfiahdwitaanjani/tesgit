@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buat Artikel</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: #111;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h2,
+        p,
+        label {
+            text-align: center;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            background: #222;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 300px;
+            resize: vertical;
+        }
+
+        .word-count {
+            font-size: 14px;
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        button {
+            padding: 10px 30px;
+            font-size: 16px;
+            background-color: #0a84ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #0066cc;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success {
+            color: #00ff88;
+        }
+
+        .error {
+            color: #ff4444;
+        }
+
+        .article-info {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #222;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>FORM ARTICLE</h2>
+
+        <!-- Judul Artikel -->
+        <label for="articleTitle">Judul Artikel:</label>
+        <input type="text" id="articleTitle" placeholder="Masukkan judul artikel..." />
+
+        <!-- Isi Artikel -->
+        <label for="articleText">Isi Artikel:</label>
+        <textarea id="articleText" placeholder="Tulis isi artikel di sini..."></textarea>
+        <div class="word-count" id="wordCount">Jumlah kata: 0</div>
+
+        <button onclick="submitArticle()">PROSES</button>
+
+        <div class="message" id="message"></div>
+        <div class="article-info" id="articleInfo"></div>
+    </div>
+
+    <script>
+        function countWords(text) {
+            return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+        }
+
+        document.getElementById("articleText").addEventListener("input", function () {
+            const wordCount = countWords(this.value);
+            document.getElementById("wordCount").textContent = "Jumlah kata: " + wordCount;
+        });
+
+        function submitArticle() {
+            const title = document.getElementById("articleTitle").value.trim();
+            const content = document.getElementById("articleText").value.trim();
+            const messageDiv = document.getElementById("message");
+            const infoDiv = document.getElementById("articleInfo");
+            const wordCount = countWords(content);
+
+            if (!title) {
+                messageDiv.textContent = "Judul artikel tidak boleh kosong.";
+                messageDiv.className = "message error";
+                return;
+            }
+
+            if (wordCount < 1500) {
+                messageDiv.textContent = "Artikel terlalu pendek. Minimal 1500 kata.";
+                messageDiv.className = "message error";
+                return;
+            } else if (wordCount > 2000) {
+                messageDiv.textContent = "Artikel terlalu panjang. Maksimal 2000 kata.";
+                messageDiv.className = "message error";
+                return;
+            }
+
+            // Tanggal & jam pembuatan
+            const now = new Date();
+            const tanggal = now.toLocaleDateString("id-ID", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            });
+            const jam = now.toLocaleTimeString("id-ID");
+
+            // Kirim ke server
+            fetch("save_artikel.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `title=${encodeURIComponent(title)}&content=${encodeURIComponent(content)}&word_count=${wordCount}`
+            })
+                .then(res => res.text())
+                .then(data => {
+                    messageDiv.textContent = data;
+                    messageDiv.className = "message success";
+
+                    infoDiv.innerHTML = `
+            <p><strong>Tanggal Pembuatan:</strong> ${tanggal}</p>
+            <p><strong>Jam:</strong> ${jam}</p>
+            <p><strong>Total Kata:</strong> ${wordCount}</p>`;
+
+                    // Reset form
+                    document.getElementById("articleTitle").value = "";
+                    document.getElementById("articleText").value = "";
+                    document.getElementById("wordCount").textContent = "Jumlah kata: 0";
+                })
+                .catch(err => {
+                    messageDiv.textContent = "Terjadi kesalahan saat menyimpan.";
+                    messageDiv.className = "message error";
+                });
+        }
+    </script>
+</body>
+
+</html>

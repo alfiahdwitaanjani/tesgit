@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitriadi & Sugiharto Law Firm</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/jpeg" href="images/law-firm.jpg" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="container flex-between">
+            <div class="logo flex-center">
+                <div class="logo-icon">
+                    <img src="images/law-firm.png" alt="Law Firm Logo" />
+                </div>
+                <div>
+                    <p class="logo-sub">LAW FIRM</p>
+                    <h1 class="logo-title">Fitriadi & Sugiharto</h1>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a data-translate="nav_home" href="index.html" class="active">Home</a>
+                <a data-translate="nav_about" href="about.html">About</a>
+                <a data-translate="nav_services" href="service.html">Services</a>
+                <a data-translate="nav_article" href="article.html">Article</a>
+                <a data-translate="nav_advantages" href="advantages.html">Advantages</a>
+                <a data-translate="nav_commitmenttoexcellence" href="commitment.html">Commitment to
+                    Excellence</a>
+                <a data-translate="nav_principles" href="principles.html">Principles</a>
+                <a data-translate="nav_lawyers" href="lawyer.html">Lawyers</a>
+                <a data-translate="nav_contact" href="contact.html">Contact</a>
+            </nav>
+
+            <!-- Actions (Email + Bahasa) -->
+            <div class="floating-actions">
+                <select id="languageSwitcher" class="lang-select small">
+                    <option value="id" data-flag="images/id.png">ID</option>
+                    <option value="en" data-flag="images/en.png">EN</option>
+                </select>
+
+                <!-- <a href="mailto:fends.lawfirm@gmail.com" class="wa-btn" data-translate="send_email">
+                    <i data-lucide="mail"></i> Konsultasi via Email
+                </a> -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Slider -->
+    <section id="home" class="home-slider">
+        <div class="slides">
+            <!-- Slide 1: Hero -->
+            <div class="slide">
+                <div class="hero">
+                    <span class="hero-badge" data-translate="hero_badge">
+                        We Don’t Ask for Trust, But We Will Prove It
+                    </span>
+                    <h2 class="hero-title" data-translate="hero_title">
+                        Legal Solutions that are <span class="gradient-text">Comprehensive, Strategic</span> & Reliable
+                    </h2>
+                    <p class="hero-desc" data-translate="hero_desc">
+                        We assist individuals and corporations in both litigation and non-litigation with the highest
+                        professional standards.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="mailto:fends.lawfirm@gmail.com" class="btn">Konsultasi via Email</a>
+                        <a href="#services" class="btn-outline">Lihat Layanan</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Lawyer -->
+            <div class="slide">
+                <div class="lawyer-wrapper">
+                    <div class="card lawyer-card">
+                        <img src="images/aris-fitriadi.jpg" alt="Aris Fitriadi" class="lawyer-photo" />
+                        <h3>Aris Fitriadi, S.H., M.H.</h3>
+                        <p class="lawyer-role" data-translate="lawyer_role">Managing Partner</p>
+                        <p class="lawyer-bio" data-translate="lawyer_bio1">
+                            Has extensive experience in handling both litigation and non-litigation cases,
+                            particularly in <strong>criminal law, civil law, and labor law</strong>.
+                            Known for a strategic approach, high integrity, and the ability to provide
+                            effective legal solutions for both individual and corporate clients.
+                        </p>
+                    </div>
+
+                    <div class="card lawyer-card">
+                        <img src="images/adi-sugiharto.jpg" alt="Moch. Adi Sugiharto" class="lawyer-photo" />
+                        <h3>Moch. Adi Sugiharto, S.H., M.H.</h3>
+                        <p class="lawyer-role" data-translate="lawyer_role1">Partner </p>
+                        <p class="lawyer-bio">
+                            Experienced in resolving <strong>industrial relations disputes, business contracts,
+                                and legal drafting</strong>. Prioritizes professionalism and upholds the advocate’s code
+                            of ethics in
+                            every case, with full dedication to protecting clients’ rights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Contact -->
+            <div class="slide">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span data-translate="lawyer_contact">
+                            18 Office Park Building, 21st Floor, Unit C, Jl. TB Simatupang No. 18 Kav,<br>
+                            Kebagusan, Pasar Minggu, South Jakarta City, Special Capital Region of Jakarta 12520
+                        </span>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+628170115319">+62 817 0115 319</a>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:fends.lawfirm@gmail.com">fends.lawfirm@gmail.com</a>
+                    </div>
+                </div>
+                <div class="map" style="margin-top:20px;">
+                    <iframe class="map"
+                        src="https://www.google.com/maps?q=18%20Office%20Park%20Building%20Jakarta&output=embed"
+                        loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol navigasi -->
+        <button class="prev-slide">‹</button>
+        <button class="next-slide">›</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Fitriadi & Sugiharto Law Firm. All rights reserved.</p>
+        <!-- <p class="small" data-translate="tagline">Tagline: "We Don’t Ask for Trust, But We Will Prove It"</p> -->
+    </footer>
+
+    <!-- Floating Email -->
+    <a href="mailto:fends.lawfirm@gmail.com" class="wa-btn" data-translate="send_email"><i data-lucide="mail"></i> Kirim
+        Email</a>
+
+    <!-- JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
