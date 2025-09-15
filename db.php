@@ -2,7 +2,7 @@
 // db.php
 $host = "localhost";
 $port = "5432";
-$dbname = "article";       // <-- sesuaikan dengan nama DB di pgAdmin
+$dbname = "articles";       // <-- sesuaikan dengan nama DB di pgAdmin
 $user = "postgres";        // ganti sesuai user
 $password = "123456"; // ganti sesuai password PostgreSQL kamu
 
